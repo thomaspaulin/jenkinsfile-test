@@ -12,8 +12,16 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+               script {
+                   def fields = env.getEnvironment()
+                   fields.each {
+                        key, value -> println("${key} = ${value}");
+                    }
+ 
+                    println(env.PATH)
+                }
                 // the test requirements aren't installed into the docker image during the build step in order to reduce size
-                sh 'pip install -r tests/requirements.txt --target "${LAMBDA_TASK_ROOT}/libs"'
+                sh 'pip install -r tests/requirements.txt --target "${env.LAMBDA_TASK_ROOT}/libs"'
                 sh 'pytest tests/'
             }
         }
