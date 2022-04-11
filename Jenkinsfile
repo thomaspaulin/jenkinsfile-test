@@ -4,9 +4,9 @@ pipeline {
             filename 'Dockerfile'
         } 
     }
-    environment { 
+//    environment { 
 //        LAMBDA_TASK_ROOT = '/var/task'
-    }
+//    }
     stages {
         stage('Test') {
             steps {
