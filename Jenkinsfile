@@ -5,9 +5,7 @@ pipeline {
         } 
     }
     environment { 
-        LAMBDA_TASK_ROOT = '/var/task' // added to match the Dockerfile, but this it's assumed this env in the Dockerfile doesn't change any time soon 
-	PATH = '${LAMBDA_TASK_ROOT}/libs/bin:$PATH'
-	PYTHONPATH = '${LAMBDA_TASK_ROOT}/libs:$PYTHONPATH'
+//        LAMBDA_TASK_ROOT = '/var/task'
     }
     stages {
         stage('Test') {
