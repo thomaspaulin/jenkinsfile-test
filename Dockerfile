@@ -13,9 +13,9 @@ RUN pip3 install -r requirements.txt --target "libs"
 ENV PYTHONPATH=libs:$PYTHONPATH
 
 COPY tests/* tests/
-RUN pip3 install -r tests/requirements.txt --target "libs"
+RUN pip3 install -r tests/requirements.txt --target "${LAMBDA_TASK_ROOT}/libs"
 
-ENV PATH=libs/bin:$PATH
+ENV PATH=${LAMBDA_TASK_ROOT}/libs/bin:$PATH
 RUN pytest
 
 CMD [ "foo.app" ]
